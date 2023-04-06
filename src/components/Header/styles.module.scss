@@ -1,0 +1,20 @@
+@use '../../styles/Home.module.scss';
+
+.header {
+  background-color: #f9e6b3;
+  height: 3rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
