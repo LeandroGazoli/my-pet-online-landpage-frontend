@@ -35,7 +35,7 @@ export default function HomeSection() {
         </div>
         <div className={styles.flex}>
           <div className={styles.informative}>
-            <p className={styles.subTitulo}>JJunte-se a nós e seja um Anjo!</p>
+            <p className={styles.subTitulo}>Junte-se a nós e seja um Anjo!</p>
             <p className={styles.text}>
               Você sabia que existem cerca de 30 milhões de cães e gatos abandonados no Brasil? Ao saber destes dados estamos conduzindo uma pesquisa para entender melhor a sua
               opinião sobre a possibilidade de voce poder alimentar um Pet Online,através de um app. Sua participação é fundamental para alcançarmos nossos objetivos e salvarmos
