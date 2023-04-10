@@ -31,7 +31,8 @@ export default function HomeSection() {
 
   const MySwal = withReactContent(Swal);
 
-  const onSubmitHandle = () => {
+  const onSubmitHandle = (data: any) => {
+    alert(data.toString());
     MySwal.fire({
       title: 'Obrigado por fazer parte dessa pesquisa.',
       icon: 'success',
