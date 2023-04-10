@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   name: yup.string().min(3).required(),
   telefone: yup
     .string()
-    .matches(/^\([1-9]{2}\) [2-9][0-9]{3,4}\-[0-9]{4}$/, 'Telefone inválido')
+    .matches(/^(\(?([1-9]{2})\)?[.\-\/ ]?)?([2-9][0-9]{3,4})[.\-\/ ]?([0-9]{4})$/, 'Telefone inválido')
     .required(),
 });
 
