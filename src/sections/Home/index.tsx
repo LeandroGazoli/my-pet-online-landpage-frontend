@@ -20,14 +20,6 @@ const schema = yup.object().shape({
 });
 
 export default function HomeSection() {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  // } = useForm<Inputs>();
-  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
   const {
     register,
     handleSubmit,
