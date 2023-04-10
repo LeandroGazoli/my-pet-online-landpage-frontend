@@ -6,11 +6,40 @@ import withReactContent from 'sweetalert2-react-content';
 import { FormEvent } from 'react';
 import { toast } from 'react-toastify';
 
+import { useForm, SubmitHandler } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  name: yup.string().min(3).required(),
+  telefone: yup
+    .string()
+    .matches(/^\([1-9]{2}\) [2-9][0-9]{3,4}\-[0-9]{4}$/, 'Telefone inválido')
+    .required(),
+});
+
 export default function HomeSection() {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors },
+  // } = useForm<Inputs>();
+  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const MySwal = withReactContent(Swal);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmitHandle = () => {
     MySwal.fire({
       title: 'Obrigado por fazer parte dessa pesquisa.',
       icon: 'success',
@@ -42,7 +71,10 @@ export default function HomeSection() {
         });
       }
     });
+
+    reset();
   };
+
   return (
     <section className={styles.wrapper}>
       <div className={`${styles.content} ${styles.container}`}>
@@ -54,7 +86,7 @@ export default function HomeSection() {
             <p className={styles.subTitulo}>Junte-se a nós e seja um Anjo!</p>
             <p className={styles.text}>
               Você sabia que existem cerca de 30 milhões de cães e gatos abandonados no Brasil? Ao saber destes dados estamos conduzindo uma pesquisa para entender melhor a sua
-              opinião sobre a possibilidade de voce poder alimentar um Pet Online,através de um app. Sua participação é fundamental para alcançarmos nossos objetivos e salvarmos
+              opinião sobre a possibilidade de voce poder alimentar um Pet Online, através de um app. Sua participação é fundamental para alcançarmos nossos objetivos e salvarmos
               vidas. Aproveite está oportunidade de contribuir com informações para essa causa tão importante Basta responder algumas perguntas agora em nossa pesquisa!
             </p>
             <Image
@@ -64,28 +96,38 @@ export default function HomeSection() {
             />
           </div>
           <div className={styles.forms}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmitHandle)}>
               <p className={styles.formTitle}>Você pode salvar vidas com essa pesquisa</p>
               <div className={styles['mb-3']}>
                 <label htmlFor="Nome">Nome Completo</label>
                 <input
                   type="text"
+                  required
                   placeholder="Nome completo"
+                  className={`${errors?.name ? styles.invalid : ''}`}
+                  {...register('name')}
                 />
               </div>
               <div className={styles['mb-3']}>
                 <label htmlFor="Nome">Email</label>
                 <input
                   type="email"
+                  required
                   placeholder="Seu email"
+                  className={`${errors?.email ? styles.invalid : ''}`}
+                  {...register('email')}
                 />
               </div>
               <div className={styles['mb-3']}>
                 <label htmlFor="Nome">Telefone</label>
                 <input
                   type="text"
+                  required
                   placeholder="Número de telefone"
+                  className={`${errors?.telefone ? styles.invalid : ''}`}
+                  {...register('telefone')}
                 />
+                {errors?.telefone && typeof errors?.telefone.message === 'string' && <span>{errors?.telefone?.message}</span>}
               </div>
               <p>Qual a sua opinião de participar desta iniciativa e poder alimentar um Pet a distância, se tornando um(a) Anjo My Pet Online?</p>
               <div className={`${styles['mb-3']} ${styles.formCheck}`}>
@@ -180,6 +222,7 @@ export default function HomeSection() {
                 </div>
               </div>
               <p>Se sim, qual valor estaria disposto(a) a gastar com o My Pet Online ?</p>
+              <span>Lembrando, que essa contribuição será destinada a um Pet que estava abandonado e hoje, com o My Pet on-line, tem um tutor e você como Anjo.</span>
               <div className={`${styles['mb-3']} ${styles.formCheck}`}>
                 <div>
                   <input
@@ -225,7 +268,6 @@ export default function HomeSection() {
                   </label>
                 </div>
               </div>
-
               <div className={styles.buttonGroup}>
                 <button className={styles.button}>Enviar</button>
               </div>

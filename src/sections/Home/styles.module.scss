@@ -3,7 +3,6 @@
 .wrapper {
   width: 100%;
   position: relative;
-  // box-shadow: 0 0.525rem 1.25rem rgba(0, 0, 0, 0.175);
 }
 
 .content {
@@ -42,7 +41,7 @@
 }
 
 .subTitulo {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   font-family: 'Dosis', sans-serif;
@@ -60,7 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   font-family: 'Dosis', sans-serif;
   text-align: center;
@@ -99,6 +98,10 @@
     background-clip: padding-box;
     border: 1px solid #dee2e6;
     border-radius: 0.5rem;
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   .formTitle {
@@ -174,6 +177,10 @@
   p {
     font-weight: 600;
   }
+
+  span {
+    font-size: 0.8rem;
+  }
 }
 
 .mb-3 {
@@ -183,4 +190,23 @@
 .carton {
   width: 100%;
   height: auto;
+}
+
+@media (max-width: 1200px) {
+  .forms {
+    p,
+    label {
+      font-size: calc(1rem - 10%);
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+input.invalid {
+  border-color: #ff4040;
 }
