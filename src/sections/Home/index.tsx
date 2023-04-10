@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { FormEvent } from 'react';
+import { toast } from 'react-toastify';
 
 export default function HomeSection() {
   const MySwal = withReactContent(Swal);
@@ -21,8 +22,23 @@ export default function HomeSection() {
     }).then((result) => {
       if (result.isConfirmed) {
         navigator.clipboard.writeText(location.href);
-        MySwal.fire({
-          title: 'Link Copiado com sucesso',
+        if (screen.width < 1024) {
+          navigator.share({
+            title: 'O título da sua página',
+            text: 'Um texto de resumo',
+            url: location.href,
+          });
+        }
+
+        toast.success('Link Copiado com sucesso!', {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
         });
       }
     });
