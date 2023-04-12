@@ -13,3 +13,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

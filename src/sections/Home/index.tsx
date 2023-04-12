@@ -8,6 +8,10 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useCallback, useEffect, useState } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+
+import axios from 'axios';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -19,6 +23,27 @@ const schema = yup.object().shape({
 });
 
 export default function HomeSection() {
+  const [token, setToken] = useState<string | undefined>();
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  // Create an event handler so you can call the verification on button click event or form submit
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
+
+    const token_key = await executeRecaptcha('MyPetOnlinePesquisaDeCampo');
+    // Do whatever you want with the token
+
+    setToken(token_key);
+  }, [executeRecaptcha]);
+
+  // You can use useEffect to trigger the verification as soon as the component being loaded
+  useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
+
   const {
     register,
     handleSubmit,
@@ -31,6 +56,10 @@ export default function HomeSection() {
   const MySwal = withReactContent(Swal);
 
   const onSubmitHandle = (data: any) => {
+    data[`g-recaptcha-response`] = token;
+
+    console.log(data);
+    axios.post('http://localhost:3001', data);
     MySwal.fire({
       title: 'Obrigado por fazer parte dessa pesquisa.',
       icon: 'success',
