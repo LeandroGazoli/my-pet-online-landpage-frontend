@@ -98,6 +98,7 @@ export default function HomeSection() {
     } catch (error: any) {
       MySwal.fire({
         title: 'Error',
+        icon: 'error',
         text: JSON.parse(error?.request.response).error,
       });
     }
