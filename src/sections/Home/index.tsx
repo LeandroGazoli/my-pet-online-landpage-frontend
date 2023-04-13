@@ -11,14 +11,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, useEffect, useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-import axios from 'axios';
+import { api } from '@/services/apiClient';
+import InputMask from 'react-input-mask';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   name: yup.string().min(3).required(),
   telefone: yup
     .string()
-    .matches(/^(\(?([1-9]{2})\)?[.\-\/ ]?)?([2-9][0-9]{3,4})[.\-\/ ]?([0-9]{4})$/, 'Telefone inválido')
+    .matches(/^\s*(\(\d{2}\)|\d{2}|\d{0})[-. ]?(9|\d{1})[-. ]?(\d{4})[-. ]?(\d{4})[-. ]?\s*$/, 'Telefone inválido')
     .required(),
 });
 
@@ -55,44 +56,51 @@ export default function HomeSection() {
 
   const MySwal = withReactContent(Swal);
 
-  const onSubmitHandle = (data: any) => {
+  const onSubmitHandle = async (data: any) => {
     data[`g-recaptcha-response`] = token;
 
-    console.log(data);
-    axios.post('http://localhost:3001', data);
-    MySwal.fire({
-      title: 'Obrigado por fazer parte dessa pesquisa.',
-      icon: 'success',
-      text: 'Você compartilharia essa pesquisa com seus contatos para engajar mais anjos My Pet On-line?',
-      showConfirmButton: true,
-      showDenyButton: true,
-      confirmButtonText: 'SIM',
-      denyButtonText: 'NÃO',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigator.clipboard.writeText(location.href);
-        if (screen.width < 1024) {
-          navigator.share({
-            title: 'O título da sua página',
-            text: 'Um texto de resumo',
-            url: location.href,
+    try {
+      await api.post('/', data);
+
+      MySwal.fire({
+        title: 'Obrigado por fazer parte dessa pesquisa.',
+        icon: 'success',
+        text: 'Você compartilharia essa pesquisa com seus contatos para engajar mais anjos My Pet On-line?',
+        showConfirmButton: true,
+        showDenyButton: true,
+        confirmButtonText: 'SIM',
+        denyButtonText: 'NÃO',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigator.clipboard.writeText(location.href);
+          if (screen.width < 1024) {
+            navigator.share({
+              title: 'O título da sua página',
+              text: 'Um texto de resumo',
+              url: location.href,
+            });
+          }
+
+          toast.success('Link Copiado com sucesso!', {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
           });
         }
+      });
 
-        toast.success('Link Copiado com sucesso!', {
-          position: 'top-right',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: 'colored',
-        });
-      }
-    });
-
-    reset();
+      reset();
+    } catch (error: any) {
+      MySwal.fire({
+        title: 'Error',
+        text: JSON.parse(error?.request.response).error,
+      });
+    }
   };
 
   return (
@@ -140,7 +148,8 @@ export default function HomeSection() {
               </div>
               <div className={styles['mb-3']}>
                 <label htmlFor="Nome">Telefone</label>
-                <input
+                <InputMask
+                  mask="(99) 9 9999-9999"
                   type="text"
                   required
                   placeholder="Número de telefone"
@@ -155,8 +164,9 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="iniciativa"
                     id="iniciativa1"
+                    defaultValue="Ruim"
+                    {...register('iniciativa')}
                   />
                   <label
                     className="form-check-label"
@@ -170,7 +180,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="iniciativa"
+                    defaultValue="Boa"
+                    {...register('iniciativa')}
                     id="iniciativa2"
                   />
                   <label
@@ -184,7 +195,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="iniciativa"
+                    defaultValue="Excelente"
+                    {...register('iniciativa')}
                     id="iniciativa3"
                   />
                   <label
@@ -201,7 +213,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="anjo"
+                    {...register('anjo')}
+                    defaultValue="Não"
                     id="anjo1"
                   />
                   <label
@@ -216,7 +229,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="anjo"
+                    {...register('anjo')}
+                    defaultValue="Sim"
                     id="anjo2"
                   />
                   <label
@@ -230,7 +244,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="anjo"
+                    {...register('anjo')}
+                    defaultValue="Quero saber mais"
                     id="anjo3"
                   />
                   <label
@@ -248,7 +263,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="valor"
+                    {...register('valor')}
+                    defaultValue="25"
                     id="valor1"
                   />
                   <label
@@ -263,7 +279,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="valor"
+                    {...register('valor')}
+                    defaultValue="50"
                     id="valor2"
                   />
                   <label
@@ -277,7 +294,8 @@ export default function HomeSection() {
                   <input
                     className={styles['form-check-input']}
                     type="radio"
-                    name="valor"
+                    {...register('valor')}
+                    defaultValue="Maior que 50"
                     id="valor3"
                   />
                   <label
