@@ -16,9 +16,26 @@ export default function Home() {
           name="viewport"
           content="width=device-width, initial-scale=1"
         />
-        <link
-          rel="icon"
-          href="/favicon.ico"
+        <meta
+          property="og:site_name"
+          content="My Pet Online"
+        />
+        <meta
+          property="og:title"
+          content="My Pet Online"
+        />
+        <meta
+          property="og:description"
+          content="Ajude mais de 80 milhões de animais abandonados com apenas um click"
+        />
+        <meta
+          property="og:image"
+          itemProp="image"
+          content="favicon.svg"
+        />
+        <meta
+          property="og:type"
+          content="website"
         />
       </Head>
       <Header />
