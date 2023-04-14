@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '@/styles/Home.module.scss';
 import Header from '@/components/Header';
 import HomeSection from '@/sections/Home';
 
@@ -31,7 +30,7 @@ export default function Home() {
         <meta
           property="og:image"
           itemProp="image"
-          content="favicon.svg"
+          content="assets/images/logo.png"
         />
         <meta
           property="og:type"
