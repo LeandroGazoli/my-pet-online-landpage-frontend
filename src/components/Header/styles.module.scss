@@ -1,8 +1,8 @@
 @use '../../styles/Home.module.scss';
 
 .header {
-  background-color: #f9e6b3;
-  height: 3rem;
+  // background-color: #f9e6b3;
+  height: 6rem;
 }
 
 .wrapper {
@@ -10,6 +10,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 .logo {
@@ -17,4 +19,9 @@
   font-family: 'Dosis', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
+  height: 100%;
+
+  img {
+    height: 100%;
+  }
 }

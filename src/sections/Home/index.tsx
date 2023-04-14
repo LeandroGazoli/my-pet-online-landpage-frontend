@@ -191,7 +191,7 @@ export default function HomeSection() {
                     {...register('iniciativa')}
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="iniciativa1"
                   >
                     Ruim
@@ -207,7 +207,7 @@ export default function HomeSection() {
                     id="iniciativa2"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="iniciativa2"
                   >
                     Boa
@@ -222,7 +222,7 @@ export default function HomeSection() {
                     id="iniciativa3"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="iniciativa3"
                   >
                     Excelente
@@ -240,7 +240,7 @@ export default function HomeSection() {
                     id="anjo1"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="anjo1"
                   >
                     Não
@@ -256,7 +256,7 @@ export default function HomeSection() {
                     id="anjo2"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="anjo2"
                   >
                     Sim
@@ -271,7 +271,7 @@ export default function HomeSection() {
                     id="anjo3"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="anjo3"
                   >
                     Quero saber mais
@@ -290,7 +290,7 @@ export default function HomeSection() {
                     id="valor1"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="valor1"
                   >
                     R$ 25,00
@@ -306,7 +306,7 @@ export default function HomeSection() {
                     id="valor2"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="valor2"
                   >
                     R$ 50,00
@@ -321,7 +321,7 @@ export default function HomeSection() {
                     id="valor3"
                   />
                   <label
-                    className="form-check-label"
+                    className={styles['form-check-label']}
                     htmlFor="valor3"
                   >
                     Acima de R$ 50,00

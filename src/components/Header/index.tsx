@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -10,7 +11,10 @@ export default function Header() {
           href="/"
           className={styles.logo}
         >
-          My Pet Online
+          <Image
+            src={require('../../assets/image/logo.svg')}
+            alt="My Pet Online"
+          />
         </Link>
       </nav>
     </header>

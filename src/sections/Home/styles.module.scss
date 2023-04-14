@@ -86,6 +86,10 @@
     font-weight: 600;
   }
 
+  .form-check-label {
+    margin-bottom: 0;
+  }
+
   input {
     display: block;
     width: 100%;
@@ -156,6 +160,10 @@
     margin-bottom: 0.125rem;
     margin-top: 1.5rem;
     justify-content: space-between;
+
+    div {
+      margin-bottom: 0.5rem;
+    }
 
     @media (min-width: 1024px) {
       flex-direction: row;
