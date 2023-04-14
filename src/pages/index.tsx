@@ -30,7 +30,7 @@ export default function Home() {
         <meta
           property="og:image"
           itemProp="image"
-          content="assets/images/logo.png"
+          content="/assets/images/logo.png"
         />
         <meta
           property="og:type"
