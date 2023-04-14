@@ -9,7 +9,7 @@ export default function Home() {
         <title>My Pet Online</title>
         <meta
           name="description"
-          content="Ajude mais de 80 milhões de animais abandonados com apenas um click"
+          content="Ajude mais de 30 milhões de animais abandonados com apenas um click"
         />
         <meta
           name="viewport"
