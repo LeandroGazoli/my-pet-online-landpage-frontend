@@ -135,6 +135,17 @@
     border-radius: 0.5rem;
     background-color: #ffe69c;
     width: 150px;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
   }
 
   .formCheck {

@@ -14,6 +14,8 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { api } from '@/services/apiClient';
 import InputMask from 'react-input-mask';
 
+import { TailSpin } from 'react-loader-spinner';
+
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   name: yup.string().min(3).required(),
@@ -26,6 +28,8 @@ const schema = yup.object().shape({
 export default function HomeSection() {
   const [token, setToken] = useState<string | undefined>();
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [ping, setPing] = useState<boolean>(true);
 
   // Create an event handler so you can call the verification on button click event or form submit
   const handleReCaptchaVerify = useCallback(async () => {
@@ -45,6 +49,20 @@ export default function HomeSection() {
     handleReCaptchaVerify();
   }, [handleReCaptchaVerify]);
 
+  useEffect(() => {
+    if (ping) {
+      const getping = async () => {
+        const res = await api.get('/');
+
+        return res;
+      };
+      getping()
+        .then(() => setPing(false))
+        .catch(() => setPing(false));
+      setPing(false);
+    }
+  }, [ping]);
+
   const {
     register,
     handleSubmit,
@@ -58,6 +76,7 @@ export default function HomeSection() {
 
   const onSubmitHandle = async (data: any) => {
     data[`g-recaptcha-response`] = token;
+    setLoading(true);
 
     try {
       await api.post('/', data);
@@ -93,14 +112,16 @@ export default function HomeSection() {
           });
         }
       });
-
+      setLoading(false);
       reset();
     } catch (error: any) {
       MySwal.fire({
         title: 'Error',
         icon: 'error',
-        text: JSON.parse(error?.request.response).error,
+        text: error?.request.response ? JSON.parse(error?.request.response).error : 'Error desconhecido',
       });
+
+      setLoading(false);
     }
   };
 
@@ -308,7 +329,25 @@ export default function HomeSection() {
                 </div>
               </div>
               <div className={styles.buttonGroup}>
-                <button className={styles.button}>Enviar</button>
+                <button
+                  className={styles.button}
+                  disabled={loading}
+                >
+                  {!loading ? (
+                    'Enviar'
+                  ) : (
+                    <TailSpin
+                      height="20"
+                      width="20"
+                      color="#4fa94d"
+                      ariaLabel="tail-spin-loading"
+                      radius="1"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                  )}
+                </button>
               </div>
             </form>
           </div>
