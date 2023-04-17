@@ -25,7 +25,7 @@ export default function Home() {
         />
         <meta
           property="og:description"
-          content="Ajude mais de 80 milhões de animais abandonados com apenas um click"
+          content="Ajude mais de 30 milhões de animais abandonados com apenas um click"
         />
         <meta
           property="og:image"
