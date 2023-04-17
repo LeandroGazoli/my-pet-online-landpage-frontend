@@ -15,6 +15,7 @@ import { api } from '@/services/apiClient';
 import InputMask from 'react-input-mask';
 
 import { TailSpin } from 'react-loader-spinner';
+import HeroForms from '@/components/HeroForms';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -140,16 +141,17 @@ export default function HomeSection() {
               vidas. Aproveite está oportunidade de contribuir com informações para essa causa tão importante Basta responder algumas perguntas agora em nossa pesquisa!
             </p>
             <Image
-              src={require('./10668.svg')}
+              src={require('./superHero.svg')}
               alt=""
               className={styles.carton}
             />
+            <HeroForms />
           </div>
           <div className={styles.forms}>
             <form onSubmit={handleSubmit(onSubmitHandle)}>
               <p className={styles.formTitle}>Você pode salvar vidas com essa pesquisa</p>
               <div className={styles['mb-3']}>
-                <label htmlFor="Nome">Nome Completo</label>
+                <label htmlFor="name">Nome Completo</label>
                 <input
                   type="text"
                   required
@@ -159,7 +161,7 @@ export default function HomeSection() {
                 />
               </div>
               <div className={styles['mb-3']}>
-                <label htmlFor="Nome">Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   required
@@ -169,7 +171,7 @@ export default function HomeSection() {
                 />
               </div>
               <div className={styles['mb-3']}>
-                <label htmlFor="Nome">Telefone</label>
+                <label htmlFor="telefone">Telefone</label>
                 <InputMask
                   mask="(99) 9 9999-9999"
                   type="text"
