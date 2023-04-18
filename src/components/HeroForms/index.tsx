@@ -54,7 +54,7 @@ export default function HeroForms() {
     <div className={styles.forms}>
       <form onSubmit={handleSubmit(onSubmitHandle)}>
         <div className={styles['mb-3']}>
-          <label htmlFor="name">Ajude com os nomes dos personagens</label>
+          <label htmlFor="name">Sugira nomes para os super-heróis!</label>
           <input
             type="text"
             required

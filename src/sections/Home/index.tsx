@@ -130,7 +130,7 @@ export default function HomeSection() {
     <section className={styles.wrapper}>
       <div className={`${styles.content} ${styles.container}`}>
         <div className={styles.title}>
-          <p>Salve vidas: Participe da pesquisa de como se tornar um super-herói do "MY PET ONLINE" e ajudar a SALVAR VIDAS!</p>
+          <p>Salve vidas! Participe da pesquisa de como se tornar um super-herói do "MY PET ONLINE" e ajudar a SALVAR VIDAS!!</p>
         </div>
         <div className={styles.flex}>
           <div className={styles.informative}>
@@ -282,22 +282,22 @@ export default function HomeSection() {
                   </label>
                 </div>
               </div>
-              <p>Se sim, qual valor estaria disposto(a) a gastar com o My Pet Online ?</p>
-              <span>Lembrando, que essa contribuição será destinada a um Pet que estava abandonado e hoje, com o My Pet online, tem um tutor e você como super-herói.</span>
+              <p>Se sim, você ajudaria o pet adotado em quais situações abaixo:</p>
+              {/* <span>Lembrando, que essa contribuição será destinada a um Pet que estava abandonado e hoje, com o My Pet online, tem um tutor e você como super-herói.</span> */}
               <div className={`${styles['mb-3']} ${styles.formCheck}`}>
                 <div>
                   <input
                     className={styles['form-check-input']}
                     type="radio"
                     {...register('valor')}
-                    defaultValue="25"
+                    defaultValue="ração"
                     id="valor1"
                   />
                   <label
                     className={styles['form-check-label']}
                     htmlFor="valor1"
                   >
-                    R$ 25,00
+                    Ração
                   </label>
                 </div>
 
@@ -306,14 +306,14 @@ export default function HomeSection() {
                     className={styles['form-check-input']}
                     type="radio"
                     {...register('valor')}
-                    defaultValue="50"
+                    defaultValue="Higiene e Bem-estar"
                     id="valor2"
                   />
                   <label
                     className={styles['form-check-label']}
                     htmlFor="valor2"
                   >
-                    R$ 50,00
+                    Higiene e Bem-estar
                   </label>
                 </div>
                 <div>
@@ -321,14 +321,14 @@ export default function HomeSection() {
                     className={styles['form-check-input']}
                     type="radio"
                     {...register('valor')}
-                    defaultValue="Maior que 50"
+                    defaultValue="saúde"
                     id="valor3"
                   />
                   <label
                     className={styles['form-check-label']}
                     htmlFor="valor3"
                   >
-                    Acima de R$ 50,00
+                    Saúde
                   </label>
                 </div>
               </div>
