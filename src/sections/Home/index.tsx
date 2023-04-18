@@ -135,11 +135,14 @@ export default function HomeSection() {
         <div className={styles.flex}>
           <div className={styles.informative}>
             <p className={styles.subTitulo}>Junte-se a nós e seja também um super-herói "MY PET ONLINE"!</p>
+            <p className={styles.text}>Você sabia que existem cerca de 30 milhões de cães e gatos abandonados no Brasil?</p>
             <p className={styles.text}>
-              Você sabia que existem cerca de 30 milhões de cães e gatos abandonados no Brasil? Ao saber destes dados, estamos conduzindo uma pesquisa para entender melhor a sua
-              opinião sobre a possibilidade de você poder alimentar PETS ONLINE, através de um app. Sua participação, nesta PESQUISA, é fundamental para alcançarmos a VALIDAÇÃO
-              destes nobres objetivos e salvarmos vidas JUNTOS! Aproveite esta oportunidade de contribuir com informações para esta causa tão importante! Basta responder,
-              rapidamente, esta pesquisa!
+              Ao saber destes dados, estamos conduzindo uma pesquisa para entender melhor a sua opinião sobre a possibilidade de você poder alimentar PETS ONLINE, através de um
+              app.
+            </p>
+            <p className={styles.text}>
+              Sua participação, nesta PESQUISA, é fundamental para alcançarmos a VALIDAÇÃO destes nobres objetivos e salvarmos vidas JUNTOS! Aproveite esta oportunidade de
+              contribuir com informações para esta causa tão importante! Basta responder, rapidamente, esta pesquisa!
             </p>
             <Image
               src={require('./superHero.svg')}
