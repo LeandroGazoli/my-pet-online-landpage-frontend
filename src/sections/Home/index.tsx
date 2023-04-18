@@ -24,6 +24,7 @@ const schema = yup.object().shape({
     .string()
     .matches(/^\s*(\(\d{2}\)|\d{2}|\d{0})[-. ]?(9|\d{1})[-. ]?(\d{4})[-. ]?(\d{4})[-. ]?\s*$/, 'Telefone inválido')
     .required(),
+  personName: yup.string().required(),
 });
 
 export default function HomeSection() {
@@ -149,7 +150,27 @@ export default function HomeSection() {
               alt=""
               className={styles.carton}
             />
-            <HeroForms />
+            {/* <HeroForms  /> */}
+            <div
+              className={styles.forms}
+              style={{
+                width: '100%',
+                padding: '1rem',
+                marginBottom: '0.3rem',
+                backgroundColor: 'transparent',
+              }}
+            >
+              <div className={styles['mb-3']}>
+                <label htmlFor="name">Sugira nomes para os super-heróis!</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Nome dos personagens"
+                  className={`${errors?.name ? styles.invalid : ''}`}
+                  {...register('personName')}
+                />
+              </div>
+            </div>
           </div>
           <div className={styles.forms}>
             <form onSubmit={handleSubmit(onSubmitHandle)}>
