@@ -97,7 +97,7 @@ export default function HomeSection() {
           if (screen.width < 1024) {
             navigator.share({
               title: 'O título da sua página',
-              text: 'Um texto de resumo',
+              text: 'Fiz minha parte, agora é sua vez!',
               url: location.href,
             });
           }
