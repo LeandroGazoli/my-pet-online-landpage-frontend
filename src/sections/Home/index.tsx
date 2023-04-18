@@ -24,7 +24,7 @@ const schema = yup.object().shape({
     .string()
     .matches(/^\s*(\(\d{2}\)|\d{2}|\d{0})[-. ]?(9|\d{1})[-. ]?(\d{4})[-. ]?(\d{4})[-. ]?\s*$/, 'Telefone inválido')
     .required(),
-  personName: yup.string().required(),
+  personName: yup.string(),
 });
 
 export default function HomeSection() {
@@ -164,7 +164,6 @@ export default function HomeSection() {
                 <label htmlFor="name">Sugira nomes para os super-heróis!</label>
                 <input
                   type="text"
-                  required
                   placeholder="Nome dos personagens"
                   className={`${errors?.name ? styles.invalid : ''}`}
                   {...register('personName')}
