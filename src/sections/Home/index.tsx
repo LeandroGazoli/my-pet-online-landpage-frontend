@@ -163,7 +163,7 @@ export default function HomeSection() {
                 />
               </div>
               <div className={styles['mb-3']}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">E-mail</label>
                 <input
                   type="email"
                   required
