@@ -130,7 +130,7 @@ export default function HomeSection() {
     <section className={styles.wrapper}>
       <div className={`${styles.content} ${styles.container}`}>
         <div className={styles.title}>
-          <p>Salve vidas: participe da pesquisa sobre ser um super-herói do My Pet Online! Onde você poderá contribuir com a saúde e Bem-estar dos Pets adotado.!</p>
+          <p>Salve vidas: Participe da pesquisa de como se tornar um super-herói do "MY PET ONLINE" e ajudar a SALVAR VIDAS!</p>
         </div>
         <div className={styles.flex}>
           <div className={styles.informative}>
@@ -150,7 +150,7 @@ export default function HomeSection() {
           </div>
           <div className={styles.forms}>
             <form onSubmit={handleSubmit(onSubmitHandle)}>
-              <p className={styles.formTitle}>Participe da pesquisa de como se tornar um super-herói do "MY PET ONLINE" e ajudar a SALVAR VIDAS!</p>
+              <p className={styles.formTitle}>Você pode salvar vidas com essa pesquisa</p>
               <p className={styles.formSubtitle}>Pois, ao se tornar super-herói do "MY PET ONLINE", você poderá contribuir na saúde e bem-estar dos Pets adotados!</p>
               <div className={styles['mb-3']}>
                 <label htmlFor="name">Nome Completo</label>
