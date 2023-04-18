@@ -85,7 +85,7 @@ export default function HomeSection() {
       MySwal.fire({
         title: 'Obrigado por fazer parte dessa pesquisa.',
         icon: 'success',
-        text: 'Você compartilharia essa pesquisa com seus contatos para engajar mais anjos My Pet On-line?',
+        text: 'Você compartilharia essa pesquisa com seus contatos para engajar mais super-heróis My Pet On-line?',
         showConfirmButton: true,
         showDenyButton: true,
         confirmButtonText: 'SIM',
@@ -130,15 +130,16 @@ export default function HomeSection() {
     <section className={styles.wrapper}>
       <div className={`${styles.content} ${styles.container}`}>
         <div className={styles.title}>
-          <p>Salve vidas: participe da pesquisa sobre ser um Anjo do My Pet Online! Onde você poderá contribuir com a saúde e Bem-estar dos Pets adotado.!</p>
+          <p>Salve vidas: participe da pesquisa sobre ser um super-herói do My Pet Online! Onde você poderá contribuir com a saúde e Bem-estar dos Pets adotado.!</p>
         </div>
         <div className={styles.flex}>
           <div className={styles.informative}>
-            <p className={styles.subTitulo}>Junte-se a nós e seja um Anjo!</p>
+            <p className={styles.subTitulo}>Junte-se a nós e seja também um super-herói "MY PET ONLINE"!</p>
             <p className={styles.text}>
-              Você sabia que existem cerca de 30 milhões de cães e gatos abandonados no Brasil? Ao saber destes dados estamos conduzindo uma pesquisa para entender melhor a sua
-              opinião sobre a possibilidade de voce poder alimentar um Pet Online, através de um app. Sua participação é fundamental para alcançarmos nossos objetivos e salvarmos
-              vidas. Aproveite está oportunidade de contribuir com informações para essa causa tão importante Basta responder algumas perguntas agora em nossa pesquisa!
+              Você sabia que existem cerca de 30 milhões de cães e gatos abandonados no Brasil? Ao saber destes dados, estamos conduzindo uma pesquisa para entender melhor a sua
+              opinião sobre a possibilidade de você poder alimentar PETS ONLINE, através de um app. Sua participação, nesta PESQUISA, é fundamental para alcançarmos a VALIDAÇÃO
+              destes nobres objetivos e salvarmos vidas JUNTOS! Aproveite esta oportunidade de contribuir com informações para esta causa tão importante! Basta responder,
+              rapidamente, esta pesquisa!
             </p>
             <Image
               src={require('./superHero.svg')}
@@ -149,7 +150,8 @@ export default function HomeSection() {
           </div>
           <div className={styles.forms}>
             <form onSubmit={handleSubmit(onSubmitHandle)}>
-              <p className={styles.formTitle}>Você pode salvar vidas com essa pesquisa</p>
+              <p className={styles.formTitle}>Participe da pesquisa de como se tornar um super-herói do "MY PET ONLINE" e ajudar a SALVAR VIDAS!</p>
+              <p className={styles.formSubtitle}>Pois, ao se tornar super-herói do "MY PET ONLINE", você poderá contribuir na saúde e bem-estar dos Pets adotados!</p>
               <div className={styles['mb-3']}>
                 <label htmlFor="name">Nome Completo</label>
                 <input
@@ -182,7 +184,7 @@ export default function HomeSection() {
                 />
                 {errors?.telefone && typeof errors?.telefone.message === 'string' && <span>{errors?.telefone?.message}</span>}
               </div>
-              <p>Qual a sua opinião de participar desta iniciativa e poder alimentar um Pet a distância, se tornando um(a) Anjo My Pet Online?</p>
+              <p>Qual a sua opinião de participar desta iniciativa e poder alimentar um Pet a distância, se tornando um(a) super-herói My Pet Online?</p>
               <div className={`${styles['mb-3']} ${styles.formCheck}`}>
                 <div>
                   <input
@@ -231,7 +233,7 @@ export default function HomeSection() {
                   </label>
                 </div>
               </div>
-              <p>Você seria um Anjo e teria um My Pet Online?</p>
+              <p>Você seria um super-herói e teria um My Pet Online?</p>
               <div className={`${styles['mb-3']} ${styles.formCheck}`}>
                 <div>
                   <input
@@ -281,7 +283,7 @@ export default function HomeSection() {
                 </div>
               </div>
               <p>Se sim, qual valor estaria disposto(a) a gastar com o My Pet Online ?</p>
-              <span>Lembrando, que essa contribuição será destinada a um Pet que estava abandonado e hoje, com o My Pet on-line, tem um tutor e você como Anjo.</span>
+              <span>Lembrando, que essa contribuição será destinada a um Pet que estava abandonado e hoje, com o My Pet online, tem um tutor e você como super-herói.</span>
               <div className={`${styles['mb-3']} ${styles.formCheck}`}>
                 <div>
                   <input
